@@ -1,17 +1,10 @@
 package pro.sky.spring_basket;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.File;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,13 +14,12 @@ import java.util.Set;
 public class BasketController {
 
     private final BasketServiceImp basketServiceImp;
-    private final ObjectMapper objectMapper;
 
 
-    public BasketController(BasketServiceImp basketServiceImp, ObjectMapper objectMapper) {
+    public BasketController(BasketServiceImp basketServiceImp) {
         this.basketServiceImp = basketServiceImp;
-        this.objectMapper = objectMapper;
     }
+
 
     @GetMapping("/add")
     public void add(
@@ -40,8 +32,7 @@ public class BasketController {
     }
 
     @GetMapping(path = "/get")
-    public List get() throws JsonProcessingException {
-
-        return Collections.singletonList(objectMapper.writeValueAsString(basketServiceImp.get()));
+    public List get() {
+        return basketServiceImp.get();
     }
 }
