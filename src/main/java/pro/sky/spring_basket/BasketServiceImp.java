@@ -9,14 +9,14 @@ import java.util.Set;
 
 @Service
 @SessionScope
-public class BasketServiceImp implements BasketInterface {
 
-    List<Set> basketList = new ArrayList<>();
-    @Override
-    public Boolean add(Set setList){
-      return basketList.add(setList);
+public class BasketServiceImp {
+
+    List<Integer> basketList = new ArrayList<>(List.of());
+    public Boolean add(Integer id){
+      return basketList.add(id);
+
     };
-    @Override
     public List get() {
          return basketList;
     };
