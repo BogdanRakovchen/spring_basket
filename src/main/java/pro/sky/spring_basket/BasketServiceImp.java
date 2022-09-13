@@ -10,9 +10,9 @@ import java.util.Set;
 @SessionScope
 public class BasketServiceImp {
 
-    List<Set> basketList = new ArrayList<>();
-    public Boolean add(Set setList){
-      return basketList.add(setList);
+    List<Integer> basketList = new ArrayList<>(List.of());
+    public Boolean add(Integer id){
+      return basketList.add(id);
     };
     public List get() {
          return basketList;
